@@ -92,7 +92,7 @@ WHERE AGE%5=0;
 
 SELECT* FROM PLAYER_DATA;
 
---7-Insert the cricketer into IPL table whose city is â€˜Jharkhandâ€™--
+--7-Insert the cricketer into IPL table whose city is ‘Jharkhand’--
 
 INSERT INTO IPL(NAME,CITY,AGE)
 SELECT*
