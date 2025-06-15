@@ -88,3 +88,69 @@ WHERE CNAME='PRAMOD';
 SELECT* FROM DEPOSIT;
 
 ----------------------------------------------------------------PART-B------------------------------------------------------
+
+
+--1-Give 10% Increment in Loan Amount. (Use Borrow Table) --
+
+UPDATE BORROW
+SET AMOUNT=(AMOUNT+(AMOUNT*(10/100)));
+
+SELECT * FROM BORROW;
+
+DROP TABLE BORROW;
+
+
+--2-Customer deposits additional 20% amount to their account, update the same. (Use Deposit Table)
+
+UPDATE DEPOSIT
+SET AMOUNT=(AMOUNT+(AMOUNT*(20/100)));
+
+SELECT * FROM DEPOSIT;
+
+--3-Increase Amount by 1000 in all the account.  (Use Deposit Table) --
+
+UPDATE DEPOSIT
+SET AMOUNT=AMOUNT+1000;
+
+SELECT * FROM DEPOSIT;
+
+--4-Update the BORROW table to set the amount to 7000 and the branch name to 'CENTRAL' where the customer name is ‘MEHUL’ and the loan number is even.
+
+UPDATE BORROW
+SET AMOUNT=7000,BNAME='CENTRAL'
+WHERE CNAME='MEHUL' AND LOANNO%2=0;
+
+SELECT * FROM BORROW;
+
+--5-Update the DEPOSIT table to set the date to '2022-05-15' and the amount to 2500 for all accounts in ‘VRCE’ and with an account number less than 105. 
+
+UPDATE DEPOSIT
+SET ADATE='2022-05-15' , AMOUNT=2500
+WHERE  BNAME='VRCE' AND ACTNO<105;
+
+SELECT * FROM DEPOSIT;
+
+
+
+
+
+----------------------------------------------------------------PART-C------------------------------------------------------
+
+
+
+--1-Update amount of loan no 321 to NULL. (Use Borrow Table)--
+
+UPDATE BORROW
+SET AMOUNT=NULL
+WHERE LOANNO=321;
+
+SELECT * FROM BORROW;
+
+--2-Update branch name of KRANTI to NULL (Use Borrow Table)--
+
+
+UPDATE BORROW
+SET BNAME=NULL
+WHERE BNAME='KRANTI'
+
+SELECT *FROM BORROW;
