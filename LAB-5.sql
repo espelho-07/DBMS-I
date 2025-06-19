@@ -7,128 +7,88 @@
 
 
 
---1-Update deposit amount of all customers from 3000 to 5000. (Use Deposit Table)--
 
-UPDATE DEPOSIT
-SET AMOUNT=5000
-WHERE AMOUNT=3000;
+--1-Add two more columns City VARCHAR (20) and Pincode INT.--
 
-SELECT* FROM DEPOSIT;
+ALTER TABLE DEPOSIT
+ADD CITY VARCHAR(20) , PINCODE INT;
 
---2-Change branch name of ANIL from VRCE to C.G. ROAD. (Use Borrow Table)--
+SELECT * FROM DEPOSIT;
 
-UPDATE BORROW
-SET BNAME='C.G. ROAD'
-WHERE CNAME='ANIL'
+--2-Add column state VARCHAR(20)--
 
-SELECT* FROM BORROW
+ALTER TABLE DEPOSIT
+ADD STATE VARCHAR(20);
 
---3-Update Account No of SANDIP to 111 & Amount to 5000. (Use Deposit Table)--
+SELECT * FROM DEPOSIT;
 
-UPDATE DEPOSIT
-SET ACTNO=111,AMOUNT=5000
-WHERE CNAME='SANDIP'
+--3-Change the size of CNAME column from VARCHAR (50) to VARCHAR (35).--
 
-SELECT* FROM DEPOSIT;
+ALTER TABLE DEPOSIT
+ALTER COLUMN CNAME VARCHAR(35);
 
---4-Update amount of KRANTI to 7000. (Use Deposit Table)--
+SELECT * FROM DEPOSIT;
 
-UPDATE DEPOSIT
-SET AMOUNT=7000
-WHERE CNAME='KRANTI';
+--4-Change the data type DECIMAL to INT in amount Column.--
 
-SELECT* FROM DEPOSIT;
+ALTER TABLE DEPOSIT
+ALTER COLUMN AMOUNT INT;
 
---5-Update branch name from ANDHERI to ANDHERI WEST. (Use Branch Table)--
+SELECT * FROM DEPOSIT;
 
-UPDATE BRANCH
-SET BNAME='ANDHERI WEST'
-WHERE BNAME='ANDHERI';
+--5-Delete Column City from the DEPOSIT table.--
 
-SELECT* FROM BRANCH;
+ALTER TABLE DEPOSIT
+DROP COLUMN CITY;
 
---6-Update branch name of MEHUL to NEHRU PALACE. (Use Deposit Table)--
+SELECT * FROM DEPOSIT;
 
-UPDATE DEPOSIT
-SET BNAME='NEHRU PALACE'
-WHERE CNAME='MEHUL';
+--6-Rename Column ActNo to ANO.--
 
-SELECT* FROM DEPOSIT;
+SP_RENAME 'DEPOSIT.ACTNO','ANO';
 
---7-Update deposit amount of all depositors to 5000 whose account no between 103 & 107. (Use Deposit Table)-- 
+SELECT * FROM DEPOSIT;
 
-UPDATE DEPOSIT
-SET AMOUNT=5000
-WHERE ACTNO BETWEEN 103 AND 107;
+--7-Change name of table DEPOSIT to DEPOSIT_DETAIL.--
 
-SELECT* FROM DEPOSIT;
+SP_RENAME 'DEPOSIT','DEPOSIT_DETAIL';
 
---8-Update ADATE of ANIL to 1-4-95. (Use Deposit Table)--
+SELECT * FROM DEPOSIT_DETAIL;
 
-UPDATE DEPOSIT
-SET ADATE='1995-04-01'
-WHERE CNAME='ANIL';
 
-SELECT* FROM DEPOSIT;
 
---9-Update the amount of MINU to 10000. (Use Deposit Table)--
 
-UPDATE DEPOSIT
-SET AMOUNT=10000
-WHERE CNAME='MINU';
-
-SELECT* FROM DEPOSIT;
-
---10-Update deposit amount of PRAMOD to 5000 and ADATE to 1-4-96 (Use Deposit Table)--
-
-UPDATE DEPOSIT
-SET AMOUNT=5000,ADATE='1996-04-01'
-WHERE CNAME='PRAMOD';
-
-SELECT* FROM DEPOSIT;
 
 ----------------------------------------------------------------PART-B------------------------------------------------------
 
 
---1-Give 10% Increment in Loan Amount. (Use Borrow Table) --
-
-UPDATE BORROW
-SET AMOUNT=(AMOUNT+(AMOUNT*(10/100)));
-
-SELECT * FROM BORROW;
-
-DROP TABLE BORROW;
 
 
---2-Customer deposits additional 20% amount to their account, update the same. (Use Deposit Table)
+--1-Rename Column ADATE to AOPENDATE OF DEPOSIT_DETAIL table.--
 
-UPDATE DEPOSIT
-SET AMOUNT=(AMOUNT+(AMOUNT*(20/100)));
+SP_RENAME 'DEPOSIT_DETAIL.ADATE','AOPENDATE';
 
-SELECT * FROM DEPOSIT;
+SELECT * FROM DEPOSIT_DETAIL;
 
---3-Increase Amount by 1000 in all the account.  (Use Deposit Table) --
+--2-Delete Column AOPENDATE from the DEPOSIT_DETAIL table. --
 
-UPDATE DEPOSIT
-SET AMOUNT=AMOUNT+1000;
+ALTER TABLE DEPOSIT_DETAIL
+DROP COLUMN AOPENDATE;
 
-SELECT * FROM DEPOSIT;
+SELECT * FROM DEPOSIT_DETAIL;
 
---4-Update the BORROW table to set the amount to 7000 and the branch name to 'CENTRAL' where the customer name is ‘MEHUL’ and the loan number is even.
+--3-Rename Column CNAME to CustomerName. --
 
-UPDATE BORROW
-SET AMOUNT=7000,BNAME='CENTRAL'
-WHERE CNAME='MEHUL' AND LOANNO%2=0;
+SP_RENAME 'DEPOSIT_DETAIL.CNAME','CUSTOMERNAME';
 
-SELECT * FROM BORROW;
+SELECT * FROM DEPOSIT_DETAIL;
 
---5-Update the DEPOSIT table to set the date to '2022-05-15' and the amount to 2500 for all accounts in ‘VRCE’ and with an account number less than 105. 
+--4-Add Column country.--
 
-UPDATE DEPOSIT
-SET ADATE='2022-05-15' , AMOUNT=2500
-WHERE  BNAME='VRCE' AND ACTNO<105;
+ALTER TABLE DEPOSIT_DETAIL
+ADD COUNTRY VARCHAR(20);
 
-SELECT * FROM DEPOSIT;
+SELECT * FROM DEPOSIT_DETAIL;
 
 
 
@@ -138,19 +98,58 @@ SELECT * FROM DEPOSIT;
 
 
 
---1-Update amount of loan no 321 to NULL. (Use Borrow Table)--
+CREATE TABLE STUDENT_DETAIL (Enrollment_No VARCHAR(20) , NAME VARCHAR(25) , CPI DECIMAL(5,2) , Birthdate DATETIME );
 
-UPDATE BORROW
-SET AMOUNT=NULL
-WHERE LOANNO=321;
+--1-Add two more columns City VARCHAR (20) (Not null) and Backlog INT (Null). --
 
-SELECT * FROM BORROW;
+ALTER TABLE STUDENT_DETAIL
+ADD CITY VARCHAR(20) , BACKLOG INT;
 
---2-Update branch name of KRANTI to NULL (Use Borrow Table)--
+SELECT * FROM STUDENT_DETAIL;
+
+--2-Add column department VARCHAR (20) Not Null.-
+
+ALTER TABLE STUDENT_DETAIL
+ADD DEPARTMENT VARCHAR(20);
+
+SELECT * FROM STUDENT_DETAIL;
+
+--3-Change the size of NAME column of student_detail from VARCHAR (25) to VARCHAR (35).--
+
+ALTER TABLE STUDENT_DETAIL
+ALTER COLUMN NAME VARCHAR(35);
+
+SELECT * FROM STUDENT_DETAIL;
+
+--4-Change the data type DECIMAL to INT in CPI Column.--
+
+ALTER TABLE STUDENT_DETAIL
+ALTER COLUMN CPI INT;
+
+SELECT * FROM STUDENT_DETAIL;
+
+--5-Delete Column City from the student_detail table.--
+
+ALTER TABLE STUDENT_DETAIL
+DROP COLUMN CITY;
+
+SELECT * FROM STUDENT_DETAIL;
+
+--6-Rename Column Enrollment_No to ENO.--
+
+SP_RENAME 'STUDENT_DETAIL.Enrollment_No','ENO';
+
+SELECT * FROM STUDENT_DETAIL;
+
+--7-Change name of table student_detail to STUDENT_MASTER.--
+
+SP_RENAME 'student_detail','STUDENT_MASTER';
+
+SELECT * FROM STUDENT_MASTER;
 
 
-UPDATE BORROW
-SET BNAME=NULL
-WHERE BNAME='KRANTI'
 
-SELECT *FROM BORROW;
+
+--DELETE, Truncate, Drop Operation--
+----------------------------------------------------------------PART-A------------------------------------------------------
+
