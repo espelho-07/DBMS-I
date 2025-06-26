@@ -28,7 +28,7 @@ FROM DEPOSIT;
 SELECT LOANNO,AMOUNT 
 FROM BORROW;
 
---5-Display loan details of all customers who belongs to ‘ANDHERI’ branch from borrow table.--
+--5-Display loan details of all customers who belongs to ï¿½ANDHERIï¿½ branch from borrow table.--
 
 SELECT *
 FROM BORROW
@@ -58,7 +58,7 @@ SELECT CNAME
 FROM DEPOSIT
 WHERE ACTNO<105;
 
---10- Display name of customer who belongs to either ‘NAGPUR’ or ‘DELHI’ from customer table. (USE OR & IN)--
+--10- Display name of customer who belongs to either ï¿½NAGPURï¿½ or ï¿½DELHIï¿½ from customer table. (USE OR & IN)--
 
 SELECT CNAME
 FROM CUSTOMERS
@@ -84,25 +84,25 @@ SELECT CNAME
 FROM BORROW
 WHERE AMOUNT BETWEEN 3000 AND 8000;
 
---13-Find all depositors who do not belongs to ‘ANDHERI’ branch from deposit table.--
+--13-Find all depositors who do not belongs to ï¿½ANDHERIï¿½ branch from deposit table.--
 
 SELECT CNAME
 FROM DEPOSIT
 WHERE BNAME!='ANDHERI';
 
---14-Display Account No, Customer Name & Amount of such customers who belongs to ‘AJNI’, ‘KAROLBAGH’ Or ‘M.G. ROAD’ and Account No is less than 104 from deposit table.--
+--14-Display Account No, Customer Name & Amount of such customers who belongs to ï¿½AJNIï¿½, ï¿½KAROLBAGHï¿½ Or ï¿½M.G. ROADï¿½ and Account No is less than 104 from deposit table.--
 
 SELECT ACTNO,CNAME,AMOUNT
 FROM DEPOSIT
 WHERE BNAME='AJNI' OR BNAME='KAROLBAGH' OR BNAME='M.G. ROAD' AND ACTNO<104;
 
---15-Display all loan no, customer from borrow table does not belong to ‘VIRAR’ or ‘AJNI’ branch. (use NOT IN)--
+--15-Display all loan no, customer from borrow table does not belong to ï¿½VIRARï¿½ or ï¿½AJNIï¿½ branch. (use NOT IN)--
 
 SELECT LOANNO,CNAME
 FROM BORROW
 WHERE BNAME NOT IN('VIRAR','AJNI');
 
---16-Display all the customer’s name other than ‘MINU’ from deposit table (Use: NOT, <>, !=)-
+--16-Display all the customerï¿½s name other than ï¿½MINUï¿½ from deposit table (Use: NOT, <>, !=)-
 
 SELECT CNAME
 FROM DEPOSIT
@@ -159,7 +159,7 @@ SELECT TOP 3*
 FROM DEPOSIT
 WHERE AMOUNT>1000;
 
---3-Display Loan No, Customer Name of first five borrowers whose branch name does not belongs to ‘ANDHERI’ from borrow table.--
+--3-Display Loan No, Customer Name of first five borrowers whose branch name does not belongs to ï¿½ANDHERIï¿½ from borrow table.--
 
 
 SELECT TOP 3 LOANNO,CNAME
