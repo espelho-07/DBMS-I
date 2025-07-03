@@ -138,3 +138,14 @@ WHERE FIRSTNAME LIKE '[AEIOU][AEIOU]%' AND CITY LIKE 'R%' AND WEBSITE LIKE '%.CO
 ------------------------------ Part – B ------------------------------
 
 
+--1. Display all the students whose name’s second character is vowel and of and start with H. 
+--2. Display all the students whose last name does not ends with ‘a’. 
+--3. Display all the students whose first name starts with consonant. 
+--4. Retrieve student details whose first name starts with 'K', last name ends with 'tel', and either their 
+--website contains 'tech' or they live in a city starting with 'R'. 
+--5. Retrieve students whose address contains a hyphen '-' and whose city starts with either 'R' or 'B'. They 
+--must have a website that ends with '.com' and their first name should not start with 'A'. 
+--Part – C: 
+--1. Display all the students whose address contains single quote or double quote. 
+--2. Find students whose city does not contain the letter 'S' and their address contains either single or double 
+--quotes. Their last name should start with 'P' and they must have a website that contains 'on'. 
