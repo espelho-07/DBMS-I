@@ -1,6 +1,6 @@
 --LAB-6--
 
------------------------------- Part – A ------------------------------
+------------------------------ Part ï¿½ A ------------------------------
 
 -- Creating the STUDENT table
 CREATE TABLE STUDENT (
@@ -14,10 +14,10 @@ CREATE TABLE STUDENT (
 
 -- Inserting records into STUDENT table
 INSERT INTO STUDENT (STUID, FIRSTNAME, LASTNAME, WEBSITE, CITY, ADDRESS) VALUES 
-(1011, 'KEYUR', 'PATEL', 'TECHONTHENET.COM', 'RAJKOT', 'A-303 ‘Vasant Kunj’, Rajkot'),
-(1022, 'HARDIK', 'SHAH', 'digminecraft.com', 'Ahmedabad', '“Ram Krupa”, Raiya Road'),
+(1011, 'KEYUR', 'PATEL', 'TECHONTHENET.COM', 'RAJKOT', 'A-303 ï¿½Vasant Kunjï¿½, Rajkot'),
+(1022, 'HARDIK', 'SHAH', 'digminecraft.com', 'Ahmedabad', 'ï¿½Ram Krupaï¿½, Raiya Road'),
 (1033, 'KAJAL', 'TRIVEDI', 'bigactivities.com', 'Baroda', 'Raj bhavan plot, near garden'),
-(1044, 'BHOOMI', 'GAJERA', 'checkyourmath.com', 'Ahmedabad', '“Jig’s Home”, Narol'),
+(1044, 'BHOOMI', 'GAJERA', 'checkyourmath.com', 'Ahmedabad', 'ï¿½Jigï¿½s Homeï¿½, Narol'),
 (1055, 'HARMIT', 'MITEL', '@ME.DARSHAN.COM', 'RAJKOT', 'B-55, Raj Residency'),
 (1066, 'ASHOK', 'JANI', NULL, 'Baroda', 'A502, Club House Building');
 
@@ -135,17 +135,52 @@ SELECT FIRSTNAME, CITY, WEBSITE
 FROM STUDENT 
 WHERE FIRSTNAME LIKE '[AEIOU][AEIOU]%' AND CITY LIKE 'R%' AND WEBSITE LIKE '%.COM%';
 
------------------------------- Part – B ------------------------------
+------------------------------ Part ï¿½ B ------------------------------
 
 
---1. Display all the students whose name’s second character is vowel and of and start with H. 
---2. Display all the students whose last name does not ends with ‘a’. 
---3. Display all the students whose first name starts with consonant. 
+--1. Display all the students whose nameï¿½s second character is vowel and of and start with H.--
+
+SELECT FIRSTNAME
+FROM STUDENT
+WHERE FIRSTNAME LIKE 'H[AEIOU]%';
+
+--2. Display all the students whose last name does not ends with ï¿½aï¿½. --
+
+SELECT FIRSTNAME
+FROM STUDENT
+WHERE LASTNAME NOT LIKE '%A';
+
+--3. Display all the students whose first name starts with consonant.--
+
+SELECT FIRSTNAME
+FROM STUDENT
+WHERE FIRSTNAME NOT LIKE '[AEIOU]%';
+
 --4. Retrieve student details whose first name starts with 'K', last name ends with 'tel', and either their 
---website contains 'tech' or they live in a city starting with 'R'. 
+--website contains 'tech' or they live in a city starting with 'R'.--
+
+SELECT FIRSTNAME 
+FROM STUDENT 
+WHERE FIRSTNAME LIKE 'K%' AND LASTNAME LIKE '%TEL' AND (WEBSITE LIKE '%TECH%' OR CITY LIKE 'R%');
+
 --5. Retrieve students whose address contains a hyphen '-' and whose city starts with either 'R' or 'B'. They 
---must have a website that ends with '.com' and their first name should not start with 'A'. 
---Part – C: 
---1. Display all the students whose address contains single quote or double quote. 
+--must have a website that ends with '.com' and their first name should not start with 'A'. --
+
+SELECT FIRSTNAME 
+FROM STUDENT
+WHERE ADDRESS LIKE '%-%' AND CITY LIKE 'R%' OR CITY LIKE 'B%' AND WEBSITE LIKE '%.COM' AND FIRSTNAME NOT LIKE 'A%';
+
+--Part ï¿½ C: 
+--1. Display all the students whose address contains single quote or double quote. --
+
+SELECT FIRSTNAME
+FROM STUDENT
+WHERE ADDRESS LIKE '%''%' OR ADDRESS LIKE '%"%';
+--[''"]
+
 --2. Find students whose city does not contain the letter 'S' and their address contains either single or double 
---quotes. Their last name should start with 'P' and they must have a website that contains 'on'. 
+--quotes. Their last name should start with 'P' and they must have a website that contains 'on'. --
+
+SELECT FIRSTNAME 
+FROM STUDENT 
+WHERE CITY NOT LIKE '%S%' AND LASTNAME LIKE 'P%' AND WEBSITE LIKE '%ON%' AND (ADDRESS LIKE '%''%' OR ADDRESS LIKE '%"%');
